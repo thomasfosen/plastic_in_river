@@ -7,8 +7,8 @@ from PIL import Image
 
 
 _DESCRIPTION = """
-    This dataset contains photos of rivers on which there may be waste. The waste items are annotated 
-    through bounding boxes, and are assigned to one of the 4 following categories: plastic bottle, plastic bag, 
+    This dataset contains photos of rivers on which there may be waste. The waste items are annotated
+    through bounding boxes, and are assigned to one of the 4 following categories: plastic bottle, plastic bag,
     another plastic waste, or non-plastic waste. Note that some photos may not contain any waste.
 """
 
@@ -41,13 +41,13 @@ class PlasticInRiver(datasets.GeneratorBasedBuilder):
                     "image": datasets.Image(),
                     "litter": datasets.Sequence(
                         {
-                            "label": datasets.ClassLabel(num_classes=3, names=["PLASTIC_BAG", "PLASTIC_BOTTLE", "OTHER_PLASTIC_WASTE"]),
+                            "label": datasets.ClassLabel(num_classes=4, names=["PLASTIC_BAG", "PLASTIC_BOTTLE", "OTHER_PLASTIC_WASTE", "NOT_PLASTIC_WASTE"]),
                             "bbox": datasets.Sequence(datasets.Value("float32"), length=4),
                         }
                     )
                 }
             )
-        
+
         return datasets.DatasetInfo(
             description=_DESCRIPTION,
             features=features,
@@ -90,4 +90,3 @@ class PlasticInRiver(datasets.GeneratorBasedBuilder):
                 })
 
             yield idx, data
-        
