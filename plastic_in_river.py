@@ -30,7 +30,7 @@ _URLS = {
 class PlasticInRiver(datasets.GeneratorBasedBuilder):
     """Download script for the Plastic In River dataset"""
 
-    VERSION = datasets.Version("1.1.0")
+    VERSION = datasets.Version("1.2.0")
 
     def _info(self):
         features = datasets.Features(
